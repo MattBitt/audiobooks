@@ -1,0 +1,70 @@
+Audiobook Process:
+
+Manual:
+Download audiobook file
+Create folder(s) (with correct bookname(s)) in audiobooks/downloads/
+
+
+Automated (mostly):
+"master" shell script - add_all_books.sh (better as a python file?)
+loop through all folders in audiobooks/downloads
+    
+    check goodreads and recommend the correct info (scraping google results of folder name??)
+        if results not correct, allow manual entry of goodreads #
+    scrape goodreads using previously obtained #
+    display information, and allow editing (nano?)
+    write information to the audiofile
+        title
+        author
+        album
+        track
+        date
+        write image to file or add to rss???
+        anything else to ID3????
+    write information to the database
+        Fields:
+            goodreads #
+            title
+            author (artist?)
+            series (album?)
+            book_of_series (track?)  #need better name
+            publishing date
+            description
+            URL
+            length (file_size)
+            duration
+            date_added
+            (deleted?)
+            image_path (or url??)
+    check files in downloads/
+        if m4b, convert to mp3 (move m4b into audiobooks/temp)
+        if multiple mp3s, combine into 1
+        rename converted (or original) audio file to goodreads # ???
+    create author folder in audiobooks/books/ (if needed)
+    move current file to audiobooks/books/author/
+next
+backup rss.xml in same folder
+create a new rss.xml by doing the following
+    cp rss_header.xml to rss.xml
+    edit the new rss.xml file to the current build date
+    query DB for all podcasts (not deleted?) order by date_added
+    append the following lines to rss.xml using info from the DB
+        <item>
+            <title>kksongtitlekk</title>
+            <link>http://the.podcast.website/</link>
+            <itunes:author>The Band Name</itunes:author>
+            <description>kkpodcastdesckk</description>
+            <itunes:summary>kkpodcastdesckk</itunes:summary>
+            <enclosure url="kkurlkk" length="kkfilesizekk" type="audio/mpeg"/>
+            <guid>kkurlkk</guid>
+            <pubDate>kkcurrdatekk</pubDate>
+            <itunes:duration>kkdurationkk</itunes:duration>
+            <itunes:keywords>kkkeywordskk</itunes:keywords>
+            <category>Podcasts</category>
+            <itunes:explicit>no</itunes:explicit>
+        </item>
+    append rss_footer.xml to rss.xml
+
+
+
+    
