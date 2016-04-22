@@ -102,6 +102,7 @@ class WebScrapingTests(unittest.TestCase):
    
             
     def testGoodReadsTitle(self):
+        """ Test if the the title is parsed correctly """
         dest = self.example['id'] + '.html'
         info = scrapeGoodreads(dest)
         self.assertEqual(self.exampleInfo['title'], info['title'])

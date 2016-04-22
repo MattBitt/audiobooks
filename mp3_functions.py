@@ -21,7 +21,6 @@ def getLength(path):
 	return audio.info.length
 	
 def writeID3(path, field, val):
-	print path
 	"""Takes the path of an audiobook file and sets the field to val """
 	if fields[field] in EasyID3.valid_keys.keys():
 		audio = EasyID3(path)
