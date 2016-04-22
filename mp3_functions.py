@@ -13,7 +13,6 @@ def readID3(path):
 def getEasyID3(path):
 	book_info = {} 
 	audio = EasyID3(path)
-	
 	for book, id3 in fields.items():	#zip(book_fields, id3_fields):
 			book_info[book] = audio.get(id3)[0]
 	return book_info
@@ -22,6 +21,7 @@ def getLength(path):
 	return audio.info.length
 	
 def writeID3(path, field, val):
+	print path
 	"""Takes the path of an audiobook file and sets the field to val """
 	if fields[field] in EasyID3.valid_keys.keys():
 		audio = EasyID3(path)

@@ -12,10 +12,10 @@ def get_author(soup):
     if author:
         return author[0].contents[0]
     else:
-        o = open("output.txt", "w")
-        for l in soup.prettify('utf-8'):
-            o.write(l)
-        o.close()
+        #o = open("output.txt", "w")
+        #for l in soup.prettify('utf-8'):
+        #    o.write(l)
+        #o.close()
         print "No author found"
         return None
 def get_title(soup):
