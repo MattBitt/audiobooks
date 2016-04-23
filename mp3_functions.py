@@ -1,7 +1,5 @@
 from mutagen.easyid3 import EasyID3
 from mutagen.mp3 import MP3
-#book_fields = ['title', 'author', 'series', 'volume', 'year']
-#id3_fields = ['title', 'artist', 'album', 'tracknumber', 'date']
 fields = {'title' : 'title', 'author' : 'artist', 'series' : 'album',
 		 'volume' : 'tracknumber', 'year' : 'date'}
 def readID3(path):

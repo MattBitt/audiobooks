@@ -2,9 +2,12 @@ import unittest
 import shutil, os
 from mp3_functions import readID3, writeID3
 from webscraper import scrape_google_for_id, wgetFile, scrapeGoodreads
-import time
+
+
+
+
 class MP3ReadTests(unittest.TestCase):
-    """ Tests reading writing ID3 information of MP3's """
+    """ Tests reading ID3 information of MP3's """
     def setUp(self):
         self.file = "Shadows of Self - 02.mp3"
         self.example = {'title': 'Shadows of Self', 'author' : 'Brandon Sanderson',
@@ -76,32 +79,32 @@ class MP3WriteTests(unittest.TestCase):
         self.assertEqual(id3['year'], self.changed['year'])
 
 #class WebScrapingTests(unittest.TestCase):
-    """ Tests reading writing ID3 information of MP3's """
  #   def setUp(self):
-        #self.example = {'title' : 'way of kings', 'id' : '7235533'} 
-#        self.example = {'title' : 'price of spring', 'id' : '6065889'} 
-        #self.example = {'title' : 'final empire', 'id' : '68428'} 
-  #      self.exampleInfo = {'id' : self.example['id'], 
-   #                           'title' : "The Way of Kings", 
-   #                           'author' : 'Brandon Sanderson', 
-   #                           'year' : '2010', 'desc' : 'Some Description'}
+ #        self.example = {'title' : 'way of kings', 'id' : '7235533'} 
+ #        self.example = {'title' : 'price of spring', 'id' : '6065889'} 
+ #        self.example = {'title' : 'final empire', 'id' : '68428'} 
+ #        self.exampleInfo = {'id' : self.example['id'], 
+ #                            'title' : "The Way of Kings", 
+ #                            'author' : 'Brandon Sanderson', 
+ #                            'year' : '2010', 'desc' : 'Some Description'}
         
-  #  def tearDown(self):
-  #      pass 
+ #   def tearDown(self):
+ #       pass 
     
-    #def testGoogleScraper(self):
-    #    self.assertEqual(self.example['id'], 
-    #                   scrape_google_for_id(self.example['title']))
-    #   def testDownloadFile(self):
-    #    url = 'http://www.goodreads.com/book/show/' + self.example['id']
-    #    dest = self.example['id'] + '.html'
-    #    wgetFile(url, dest)
-    #    self.assertTrue(os.path.isfile(dest))
+ #   def testGoogleScraper(self):
+ #       self.assertEqual(self.example['id'], 
+ #                      scrape_google_for_id(self.example['title']))
+ #   def testDownloadFile(self):
+ #       url = 'http://www.goodreads.com/book/show/' + self.example['id']
+ #       dest = self.example['id'] + '.html'
+ #       wgetFile(url, dest)
+ #       self.assertTrue(os.path.isfile(dest))
 
      
    
 class GoodReadsScrapingTests(unittest.TestCase):         
     def setUp(self):
+        examples = []
         self.exampleInfo = {  'id': "68428", 'title' : "Mistborn: The Final Empire", 
                               'author' : 'Brandon Sanderson', 
                               'series' : "Mistborn", 'volume' : '#1',
@@ -124,7 +127,7 @@ class GoodReadsScrapingTests(unittest.TestCase):
     def testGoodReadsTitle(self):
         """ Test if the the title is parsed correctly """
         info = scrapeGoodreads(self.dest)
-        print info
+        #print info
         #shutil.copy(dest, 'test.html')
         #print "GoodReadTest"
         #print os.stat(dest).st_size
@@ -135,4 +138,6 @@ class GoodReadsScrapingTests(unittest.TestCase):
         self.assertEqual(self.exampleInfo['volume'], info['volume'])
         self.assertEqual(self.exampleInfo['year'], info['year'])
         self.assertEqual(self.exampleInfo['desc'][:10], info['desc'][:10])
+
+
 unittest.main()

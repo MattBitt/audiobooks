@@ -82,26 +82,12 @@ def scrape_google_for_id(booktitle):
     searchObj = re.search(pattern, raw_link)
     if not searchObj:
         return None
-    #soup = None
     return searchObj.group(1)
     
     
     
 def scrapeGoodreads(path):
-    #goodreads_id = scrape_google_for_id(bookTitle)    
-    #print goodreads_id    
     info = {}
-   
-
-    #wget_function(goodreads_id)
-   
-    #soup = make_soup(DOWNLOADED_FILE)
-    #soup = make_soup("7235533-the-way-of-kings") 
-    #soup = make_soup("6065889-the-price-of-spring")
-    #soup = make_soup("243272.Mistborn.html") 
-    #goodreads_id = '10614'
-    #soup = make_soup('10614.html')
-    
     soup = makeSoup(path)
     info['title'] = get_title(soup)
     info['author'] = get_author(soup)
