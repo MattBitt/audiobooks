@@ -1,8 +1,8 @@
 import unittest
 import shutil, os
 from mp3_functions import readID3, writeID3
-from webscraper import scrape_google_for_id, downloadFile, scrapeGoodreads
-
+from webscraper import scrape_google_for_id, wgetFile, scrapeGoodreads
+import time
 class MP3ReadTests(unittest.TestCase):
     """ Tests reading writing ID3 information of MP3's """
     def setUp(self):
@@ -75,36 +75,64 @@ class MP3WriteTests(unittest.TestCase):
         id3 = readID3(self.file)
         self.assertEqual(id3['year'], self.changed['year'])
 
-class WebScrapingTests(unittest.TestCase):
+#class WebScrapingTests(unittest.TestCase):
     """ Tests reading writing ID3 information of MP3's """
-    def setUp(self):
-        self.example = {'title' : 'way of kings', 'id' : '7235533'} 
-        #self.example = {'title' : 'price of spring', 'id' : '6065889'} 
+ #   def setUp(self):
+        #self.example = {'title' : 'way of kings', 'id' : '7235533'} 
+#        self.example = {'title' : 'price of spring', 'id' : '6065889'} 
         #self.example = {'title' : 'final empire', 'id' : '68428'} 
-        self.exampleInfo = {'id' : self.example['id'], 
-                              'title' : "The Way of Kings", 
-                              'author' : 'Brandon Sanderson', 
-                              'series' : "The Stormlight Archive", 'volume' : '1',
-                              'year' : '2010', 'desc' : 'Some Description'}
+  #      self.exampleInfo = {'id' : self.example['id'], 
+   #                           'title' : "The Way of Kings", 
+   #                           'author' : 'Brandon Sanderson', 
+   #                           'year' : '2010', 'desc' : 'Some Description'}
         
-    def tearDown(self):
-        pass 
-    def testGoogleScraperBad(self):
-        self.assertIsNone(scrape_google_for_id("mizzle"))   
-    def testGoogleScraper(self):
-        self.assertEqual(self.example['id'], 
-                         scrape_google_for_id(self.example['title']))
-    def testDownloadFile(self):
-        url = 'http://www.goodreads.com/book/show/' + self.example['id']
-        dest = self.example['id'] + '.html'
-        downloadFile(url, dest)
-        self.assertTrue(os.path.isfile(dest))
+  #  def tearDown(self):
+  #      pass 
+    
+    #def testGoogleScraper(self):
+    #    self.assertEqual(self.example['id'], 
+    #                   scrape_google_for_id(self.example['title']))
+    #   def testDownloadFile(self):
+    #    url = 'http://www.goodreads.com/book/show/' + self.example['id']
+    #    dest = self.example['id'] + '.html'
+    #    wgetFile(url, dest)
+    #    self.assertTrue(os.path.isfile(dest))
+
+     
    
-            
+class GoodReadsScrapingTests(unittest.TestCase):         
+    def setUp(self):
+        self.exampleInfo = {  'id': "68428", 'title' : "Mistborn: The Final Empire", 
+                              'author' : 'Brandon Sanderson', 
+                              'series' : "Mistborn", 'volume' : '#1',
+                              'year' : '2006', 'desc' : 'In a world where ash '}
+       # self.exampleInfo = {  'id': "6065889", 'title' : "The Price of Spring", 
+       #                       'author' : 'Daniel Abraham', 
+       #                       'series' : "Long Price Quartet", 'volume' : '#4',
+       #                       'year' : '2009', 'desc' : 'Fifteen years have'}
+       #self.exampleInfo = {  'id': "7235533", 'title' : "The Way of Kings", 
+       #                       'author' : 'Brandon Sanderson', 
+       #                       'series' : "The Stormlight Archive", 'volume' : '#1',
+       #                       'year' : '2010', 'desc' : 'Speak again the ancient oaths'}        
+        url = 'http://www.goodreads.com/book/show/' + self.exampleInfo['id']
+        self.dest = self.exampleInfo['id'] + '.html'
+        if (os.path.isfile(self.dest)):
+            os.remove(self.dest)
+        wgetFile(url, self.dest)
+        
+    
     def testGoodReadsTitle(self):
         """ Test if the the title is parsed correctly """
-        dest = self.example['id'] + '.html'
-        info = scrapeGoodreads(dest)
+        info = scrapeGoodreads(self.dest)
+        print info
+        #shutil.copy(dest, 'test.html')
+        #print "GoodReadTest"
+        #print os.stat(dest).st_size
+        ##print os.stat('test.html').st_size
         self.assertEqual(self.exampleInfo['title'], info['title'])
-
+        self.assertEqual(self.exampleInfo['author'], info['author'])
+        self.assertEqual(self.exampleInfo['series'], info['series'])
+        self.assertEqual(self.exampleInfo['volume'], info['volume'])
+        self.assertEqual(self.exampleInfo['year'], info['year'])
+        self.assertEqual(self.exampleInfo['desc'][:10], info['desc'][:10])
 unittest.main()

@@ -4,6 +4,7 @@ from unidecode import unidecode
 import requests
 import re
 import wget
+import os
 
 BASE_URL = "http://www.goodreads.com/book/show/"
 
@@ -12,14 +13,11 @@ def get_author(soup):
     if author:
         return author[0].contents[0]
     else:
-        #o = open("output.txt", "w")
-        #for l in soup.prettify('utf-8'):
-        #    o.write(l)
-        #o.close()
         print "No author found"
         return None
+
 def get_title(soup):
-    title = soup.select('#bookTitle')
+    title = soup.select('.bookTitle')
     if title:
         return title[0].contents[0].strip()
     else:
@@ -36,6 +34,7 @@ def get_series(soup):
 
 def get_description(soup):
     description = soup.select('#description span')
+    
     d = ""
     if description:
         for l in description[1].contents:
@@ -60,27 +59,14 @@ def get_year(soup):
         return None  
 
 def makeSoup(path):
-        return BeautifulSoup(open(path), "lxml")  
+        return BeautifulSoup(open(path), "html.parser")  
 
-#def wget_function(goodreads_id):
-#    BASE_URL = "http://www.goodreads.com/book/show/"
-#    goodreads_url = BASE_URL + goodreads_id
-#    wget.download(url=goodreads_url, out=goodreads_id+".html")
+def wgetFile(url, dest):
+    if (os.path.isfile(dest)):
+            os.remove(dest)
+    filename = wget.download(url, out = dest)
+    return filename
 
-#def wgetScraper(url, dest):
-#    return False
-def downloadFile(url, dest):
-    try:
-        f = urllib2.urlopen(url)
-        # Open our local file for writing
-        with open(dest, "wb") as local_file:
-            local_file.write(f.read())
-
-    #handle errors
-    except HTTPError, e:
-        print "HTTP Error:", e.code, url
-    except URLError, e:
-        print "URL Error:", e.reason, url
 
 
 def scrape_google_for_id(booktitle):
@@ -105,6 +91,7 @@ def scrapeGoodreads(path):
     #goodreads_id = scrape_google_for_id(bookTitle)    
     #print goodreads_id    
     info = {}
+   
 
     #wget_function(goodreads_id)
    
@@ -114,13 +101,13 @@ def scrapeGoodreads(path):
     #soup = make_soup("243272.Mistborn.html") 
     #goodreads_id = '10614'
     #soup = make_soup('10614.html')
+    
     soup = makeSoup(path)
-
     info['title'] = get_title(soup)
     info['author'] = get_author(soup)
     series = get_series(soup)
-    info['series'] = series[:-3]
-    info['volume'] = series[-3:]
+    info['series'] = series[:-3].strip()
+    info['volume'] = series[-3:].strip()
     info['year'] = get_year(soup)
     info['desc'] = get_description(soup)
     return info
@@ -129,9 +116,11 @@ if __name__ == "__main__":
     #title = "well of ascension" #68429
     #title = "final empire" #68428
     #title = "way of kings"
-    title = "misery"
-    scrape_goodreads(title)
-
+    #title = "misery"
+    #scrape_goodreads(title)
+    #print scrapeGoodreads("6065889.html")
+    print scrapeGoodreads("7235533.html")
+    
 
 
 
