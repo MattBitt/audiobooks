@@ -1,0 +1,1 @@
+d:\python\audiobooks\venv\Scripts\activate

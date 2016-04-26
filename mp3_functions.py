@@ -6,7 +6,7 @@ def readID3(path):
 	book_info = {}
 	if path:
 		book_info = getEasyID3(path)
-		book_info['length'] = getLength(path)
+		book_info['length'] = int(getLength(path))
 	return book_info
 def getEasyID3(path):
 	book_info = {} 

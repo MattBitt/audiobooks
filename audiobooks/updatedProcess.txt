@@ -1,0 +1,18 @@
+Download audiobooks
+Copy them to the server into folders that are correctly named
+Loop through each folder
+    Check conversion or combining
+    Scrape google for goodreadsid using folder name  *working
+    Download page from goodreads using the id  *working
+    Parse goodreads page for info  *working
+    Write the correct ID3 information to the MP3 *working
+    Rename the file with the correct information 
+    Move the audiobook file to the authors folder under ./books/
+    Download goodreads image?  *working
+    Rename image.
+    Move image under ./books/images/
+    Create new entry in Database
+Backup existing rss.xml  
+Create new rss.xml from Database  *working mostly
+
+
