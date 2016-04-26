@@ -1,10 +1,9 @@
-from bs4 import BeautifulSoup, NavigableString, Tag
-import urllib2
-from unidecode import unidecode
-import requests
 import re
-import wget
 import os
+import requests
+import wget
+from unidecode import unidecode
+from bs4 import BeautifulSoup, NavigableString
 
 BASE_URL = "http://www.goodreads.com/book/show/"
 
@@ -22,7 +21,7 @@ def get_title(soup):
         return title[0].contents[0].strip()
     else:
         print "No title found"
-        return None    
+        return None
 
 def get_series(soup):
     series = soup.select('#bookTitle a')
@@ -34,7 +33,7 @@ def get_series(soup):
 
 def get_description(soup):
     description = soup.select('#description span')
-    
+
     d = ""
     if description:
         for l in description[1].contents:
@@ -48,7 +47,7 @@ def get_year(soup):
     year = soup.select('#details')
     if year:
         con = year[0].contents[3].contents[0]
-        con = con.replace('\n','')
+        con = con.replace('\n', '')
         pattern = r'Published(.*)by'
         searchObj = re.search(pattern, con)
         y = searchObj.group(1).strip()
@@ -56,18 +55,16 @@ def get_year(soup):
         return y
     else:
         print "No year found"
-        return None  
+        return None
 
 def makeSoup(path):
-        return BeautifulSoup(open(path), "html.parser")  
+    return BeautifulSoup(open(path), "html.parser")
 
 def wgetFile(url, dest):
-    if (os.path.isfile(dest)):
-            os.remove(dest)
-    filename = wget.download(url, out = dest)
+    if os.path.isfile(dest):
+        os.remove(dest)
+    filename = wget.download(url, out=dest)
     return filename
-
-
 
 def scrape_google_for_id(booktitle):
     booktitle = booktitle.replace(' ', '+')
@@ -76,16 +73,13 @@ def scrape_google_for_id(booktitle):
     res.raise_for_status()
     soup = BeautifulSoup(res.text, "lxml")
     linkElems = soup.select('.r a')
-    raw_link =  linkElems[0].get('href')
+    raw_link = linkElems[0].get('href')
     pattern = r'book\/show\/(\d+)'
-    
     searchObj = re.search(pattern, raw_link)
     if not searchObj:
         return None
     return searchObj.group(1)
-    
-    
-    
+
 def scrapeGoodreads(path):
     info = {}
     soup = makeSoup(path)
@@ -97,8 +91,12 @@ def scrapeGoodreads(path):
     info['year'] = get_year(soup)
     info['desc'] = get_description(soup)
     return info
-    
-if __name__ == "__main__":	    
+
+def getImageLink(soup):
+    img = soup.find('img', {'id' : 'coverImage'})['src']
+    return img
+
+if __name__ == "__main__":
     #title = "well of ascension" #68429
     #title = "final empire" #68428
     #title = "way of kings"
@@ -106,12 +104,3 @@ if __name__ == "__main__":
     #scrape_goodreads(title)
     #print scrapeGoodreads("6065889.html")
     print scrapeGoodreads("7235533.html")
-    
-
-
-
-
-
-
-
-
