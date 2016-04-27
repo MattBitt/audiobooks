@@ -30,7 +30,7 @@ loop through all folders in audiobooks/downloads
             book_of_series (track?)  #need better name
             publishing date
             description
-            URL
+            rss_url
             length (file_size)
             duration
             date_added

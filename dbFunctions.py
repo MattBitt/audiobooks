@@ -7,11 +7,11 @@ def getBook(id):
     
 def addBook(dbPath, info):
     conn = sqlite3.connect(dbPath)
-    query = """INSERT INTO books (id, title, author, series, volume, year, dateAdded, length,
-            url, fileSize, deleted, imagePath) VALUES 
-            ('{id}', '{title}', '{author}', '{series}', '{volume}', {year}, 
+    query = """INSERT INTO books (id, title, author, series, volume, year, dateAdded, length, \
+            url, fileSize, deleted, imagePath) VALUES \
+            ('{id}', '{title}', '{author}', '{series}', '{volume}', {year}, \
             '{dateAdded}', {length}, '{url}', {fileSize}, {deleted}, '{imagePath}')""".format(**info)
-      conn.execute(query)
+    conn.execute(query)
     conn.commit()    
 
    

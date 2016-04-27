@@ -17,9 +17,8 @@ class MP3ReadTests(unittest.TestCase):
     def tearDown(self):
         pass
     
-    def testReadTitle(self):
+    def test_ReadTitle(self):
         id3 = readID3(self.file)
-
         self.assertEqual(id3['title'], self.example['title'])
 
     def testReadAuthor(self):
@@ -41,6 +40,8 @@ class MP3ReadTests(unittest.TestCase):
     def testReadLength(self):
         id3 = readID3(self.file)
         self.assertEqual(int(id3['length']), int(self.example['length']))
+
+        
 class MP3WriteTests(unittest.TestCase):
     """ Tests reading writing ID3 information of MP3's """
     def setUp(self):

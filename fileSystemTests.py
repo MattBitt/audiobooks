@@ -21,7 +21,7 @@ class fileSystemTests(unittest.TestCase):
         self.assertTrue("The Price of Spring" in subFolders)
         
     def testMoveFile(self):
-        moveFile(os.path.join(self.path, "test1"), os.path.join(self.path, "test4"))
+        move_file(os.path.join(self.path, "test1"), os.path.join(self.path, "test4"))
         self.assertFalse(os.path.exists(os.path.join(self.path, "test1")))
         self.assertTrue(os.path.exists(os.path.join(self.path, "test4")))
 unittest.main()

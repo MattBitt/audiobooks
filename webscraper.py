@@ -57,10 +57,12 @@ def get_year(soup):
         print "No year found"
         return None
 
-def makeSoup(path):
+def make_soup(path):
     return BeautifulSoup(open(path), "html.parser")
 
-def wgetFile(url, dest):
+def wget_file(url, dest):
+    print url
+    print dest
     if os.path.isfile(dest):
         os.remove(dest)
     filename = wget.download(url, out=dest)
@@ -78,21 +80,28 @@ def scrape_google_for_id(booktitle):
     searchObj = re.search(pattern, raw_link)
     if not searchObj:
         return None
+    print "ID: ", searchObj.group(1)
     return searchObj.group(1)
 
-def scrapeGoodreads(path):
+def scrape_goodreads(id, path):
     info = {}
-    soup = makeSoup(path)
+    info['id'] = id
+    soup = make_soup(path)
     info['title'] = get_title(soup)
     info['author'] = get_author(soup)
     series = get_series(soup)
     info['series'] = series[:-3].strip()
     info['volume'] = series[-3:].strip()
     info['year'] = get_year(soup)
-    info['desc'] = get_description(soup)
+    info['description'] = get_description(soup)
+    info['description'] = info['description'].replace("\"","").replace("\'","")
+    
+    #'image_url' needs to be the location on the server (not from goodreads)
+    #info['image_url'] = get_image_link(path)
     return info
 
-def getImageLink(soup):
+def get_image_url(path):
+    soup = make_soup(path)
     img = soup.find('img', {'id' : 'coverImage'})['src']
     return img
 
