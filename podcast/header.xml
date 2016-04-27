@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+ <channel>
+ <atom:link href="http://bittfurst.dynamic-dns.net:4041/podcast/rss.xml" rel="self" type="application/rss+xml" />
+     <title>Audiobooks</title>
+     <link>http://www.google.com</link>
+     <description>My local audiobooks podcast</description>
+     <lastBuildDate>{}</lastBuildDate>
+     <language>en-us</language>
+     <copyright>Copyright 2016 © Mizzle</copyright>
+     <itunes:subtitle>Streaming Audiobooks</itunes:subtitle>
+     <itunes:author>Mizzle</itunes:author>
+     <itunes:summary>Streaming Audiobooks</itunes:summary>
+     <itunes:owner>
+         <itunes:name>Mizzle</itunes:name>
+         <itunes:email>mizzle@gmail.com</itunes:email>
+     </itunes:owner>
+     <itunes:image href="http://bittfurst.dynamic-dns.net:4041/podcast/podcast_image.jpg" />
+     <itunes:category text="Audiobooks" />
+     </itunes:category>

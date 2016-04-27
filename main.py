@@ -1,7 +1,7 @@
 from file_operations import get_sub_folders, combine_mp3s, convert_from_m4b, count_files, move_goodreads_files, move_file, remove_file
 from webscraper import scrape_google_for_id, wget_file, scrape_goodreads, get_image_url
 from db_functions import add_book_to_db, get_all_info_from_db
-from mp3_functions import write_info_to_id3
+from mp3_functions import write_info_to_id3, get_duration
 from datetime import datetime, date
 import os
 BASEURL = 'http://bittfurst.dynamic-dns.net:4041/books/'
@@ -22,8 +22,7 @@ def get_info(book_file, id):
     info_file = id +'.html'
     info = scrape_goodreads(id, info_file)
     
-    #info['duration'] = read_duration(book_file)
-    info['duration'] = 1800
+    info['duration'] = get_duration(book_file)
     info['date_added'] = datetime.today()
     info['file_size'] = os.path.getsize(book_file)
     
@@ -45,13 +44,13 @@ def download_goodreads_files(id):
     goodreads_url = 'http://www.goodreads.com/book/show/' + id
     out_file = id + '.html'
     print "Downloading Goodreads page"
-    #successful = wget.download(goodreads_url, out=out_file)
+    #successful = wget_file(goodreads_url, out_file)
     successful = True
     if successful:
         image_url = get_image_url(out_file)
         img_out_file = id + '.jpg' #need to get extension from actual file
         print "Downloading artwork"
-        #successful = wget.download(image_url, img_out_file)
+        #successful = wget_file(image_url, img_out_file)
         successful = True
         if not successful:
             print "There was a problem downloading the image", image_url
@@ -98,8 +97,7 @@ if __name__ == "__main__":
         if not count_files(book_folder_path, '\*.MP3') == 1:
             print "Something went wrong.  Skipping import of ", book_name, "\n\n"
         else:
-            #id = get_goodreads_id(book_name)
-            id = '7235533'
+            id = get_goodreads_id(book_name)
             file_name = os.listdir(book_folder_path)[0]
             book_file = os.path.join(book_folder_path, file_name)
             success = download_goodreads_files(id)

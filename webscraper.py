@@ -66,7 +66,7 @@ def wget_file(url, dest):
     if os.path.isfile(dest):
         os.remove(dest)
     filename = wget.download(url, out=dest)
-    return filename
+    return True
 
 def scrape_google_for_id(booktitle):
     booktitle = booktitle.replace(' ', '+')
