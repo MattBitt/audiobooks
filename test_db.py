@@ -5,17 +5,18 @@ import unittest
 
 
 class testDBFunctions(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.db = MYDB('test.db')
-        cls.TOINSERT = {'id' : '123456', 'title' : 'my title', 'author' : 'mizzle', 'series' : 'bizzle',  'volume' : '#6', 'year' : 1981, \
+    
+    def setUp(self):
+        self.db = MYDB('test.db')
+        self.TOINSERT = {'id' : '123456', 'title' : 'my title', 'author' : 'mizzle', 'series' : 'bizzle',  'volume' : '#6', 'year' : 1981, \
                     'date_added' : '4-28-2016', 'duration' : 407, 'local_url' : 'http://www.google.com', 'file_size' : 16419170, 'deleted' : 0, \
                     'local_image_url' : 'http://www.myimage.com', 'description' : 'A very long description...'}
         
-    @classmethod
-    def tearDownClass(cls):
-        #cls.db.delete_all('books')
+    
+    def tearDown(self):
+        self.db.delete_all('books')
         pass
+    
     def test_insert_record(self):
         num_records = self.db.count_records('books')
         self.db.insert_record('books', self.TOINSERT)
@@ -44,5 +45,23 @@ class testDBFunctions(unittest.TestCase):
         self.db.insert_record('books', ab.__dict__)
         self.assertEqual(num_records + 1, self.db.count_records('books'))
 
+    def test_get_book(self):
+        id = '123456'
+        self.db.insert_record('books', self.TOINSERT)
+        book = self.db.get_book('books', id)
+        self.assertTrue(len(book)>0)
+        id = '654321'
+        book = self.db.get_book('books', id)
+        self.assertFalse(len(book)>0)
+    
+    def test_insert_duplicate(self):
+        self.db.insert_record('books', self.TOINSERT)
+        self.db.insert_record('books', self.TOINSERT)
+        self.assertEqual(1, self.db.count_records('books'))
+        diff_record = self.TOINSERT
+        diff_record['id'] = '123457'
+        self.db.insert_record('books', diff_record)
+        self.assertEqual(2, self.db.count_records('books'))
+        
 if __name__ == "__main__":
     unittest.main()

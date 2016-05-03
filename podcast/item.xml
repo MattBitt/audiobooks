@@ -5,8 +5,8 @@
         <itunes:author>{author}</itunes:author>
         <description>{description}</description>
         <itunes:summary>{description}</itunes:summary>
-        <enclosure url="{url}" length="{file_size}" type="audio/mpeg"/>
-        <guid>{url}</guid>
+        <enclosure url="{local_url}" length="{file_size}" type="audio/mpeg"/>
+        <guid>{local_url}</guid>
         <pubDate>{date_added}</pubDate>
         <itunes:duration>{duration}</itunes:duration>
         <category>Podcasts</category>

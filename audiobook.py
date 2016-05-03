@@ -16,7 +16,7 @@ class Audiobook(object):
             self.id = None
             
             # these come from the goodreads scraper
-            self.title = None
+            self.title = os.path.basename(path)
             self.series = None
             self.volume = None
             self.author = None
@@ -35,8 +35,9 @@ class Audiobook(object):
             
             #future use?
             self.deleted = 0
+            
         else:
-            raise ValueError("""{} does not exist""".format(path))
+            print """{} does not exist""".format(path)
     
     @property
     def initial_book_name(self):

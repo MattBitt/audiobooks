@@ -5,7 +5,7 @@
      <title>Audiobooks</title>
      <link>http://www.google.com</link>
      <description>My local audiobooks podcast</description>
-     <lastBuildDate>Tue, 26 Apr 2016 21:20:17 GMT</lastBuildDate>
+     <lastBuildDate>Mon, 02 May 2016 17:29:46 GMT</lastBuildDate>
      <language>en-us</language>
      <copyright>Copyright 2016 © Mizzle</copyright>
      <itunes:subtitle>Streaming Audiobooks</itunes:subtitle>
@@ -19,15 +19,28 @@
      <itunes:category text="Audiobooks" />
      </itunes:category>    
     <item>
-        <title>The Martian</title>
+        <title>Gardens of the Moon</title>
         <link>http://the.podcast.website/</link>
-        <itunes:author>Andy Weir</itunes:author>
-        <description>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </description>
-        <itunes:summary>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </itunes:summary>
-        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3" length="313760155.0" type="audio/mpeg"/>
-        <guid>http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3</guid>
-        <pubDate>2016-04-26 21:20:17.321000</pubDate>
-        <itunes:duration>39214.464</itunes:duration>
+        <itunes:author>Steven Erikson</itunes:author>
+        <description>The Malazan Empire simmers with discontent, bled dry by interminable warfare, bitter infighting, and bloody confrontations. Even the imperial legions, long inured to the bloodshed, yearn for some respite. Yet Empress Laseens rule remains absolute, enforced by her dread Claw assassins.  </description>
+        <itunes:summary>The Malazan Empire simmers with discontent, bled dry by interminable warfare, bitter infighting, and bloody confrontations. Even the imperial legions, long inured to the bloodshed, yearn for some respite. Yet Empress Laseens rule remains absolute, enforced by her dread Claw assassins.  </itunes:summary>
+        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/55399.mp3" length="750994793.0" type="audio/mpeg"/>
+        <guid>http://bittfurst.dynamic-dns.net:4041/books/55399.mp3</guid>
+        <pubDate>2016-05-02 17:26:29.872000</pubDate>
+        <itunes:duration>93850</itunes:duration>
+        <category>Podcasts</category>
+        <itunes:explicit>no</itunes:explicit>
+    </item>    
+    <item>
+        <title>The Color of Magic</title>
+        <link>http://the.podcast.website/</link>
+        <itunes:author>Terry Pratchett</itunes:author>
+        <description>Terry Pratchetts profoundly irreverent, bestselling novels have garnered him a revered position in the halls of parody next to the likes of Mark Twain, Kurt Vonnegut, Douglas Adams, and Carl Hiaasen. </description>
+        <itunes:summary>Terry Pratchetts profoundly irreverent, bestselling novels have garnered him a revered position in the halls of parody next to the likes of Mark Twain, Kurt Vonnegut, Douglas Adams, and Carl Hiaasen. </itunes:summary>
+        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/34497.mp3" length="2674067.0" type="audio/mpeg"/>
+        <guid>http://bittfurst.dynamic-dns.net:4041/books/34497.mp3</guid>
+        <pubDate>2016-05-02 17:26:26.433000</pubDate>
+        <itunes:duration>298</itunes:duration>
         <category>Podcasts</category>
         <itunes:explicit>no</itunes:explicit>
     </item>    
@@ -37,49 +50,10 @@
         <itunes:author>Andy Weir</itunes:author>
         <description>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </description>
         <itunes:summary>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </itunes:summary>
-        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3" length="313760155.0" type="audio/mpeg"/>
-        <guid>http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3</guid>
-        <pubDate>2016-04-26 21:17:05.927000</pubDate>
-        <itunes:duration>1800.0</itunes:duration>
-        <category>Podcasts</category>
-        <itunes:explicit>no</itunes:explicit>
-    </item>    
-    <item>
-        <title>The Martian</title>
-        <link>http://the.podcast.website/</link>
-        <itunes:author>Andy Weir</itunes:author>
-        <description>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </description>
-        <itunes:summary>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </itunes:summary>
-        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3" length="313760155.0" type="audio/mpeg"/>
-        <guid>http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3</guid>
-        <pubDate>2016-04-26 21:14:24.096000</pubDate>
-        <itunes:duration>1800.0</itunes:duration>
-        <category>Podcasts</category>
-        <itunes:explicit>no</itunes:explicit>
-    </item>    
-    <item>
-        <title>The Martian</title>
-        <link>http://the.podcast.website/</link>
-        <itunes:author>Andy Weir</itunes:author>
-        <description>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </description>
-        <itunes:summary>Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, hes sure hell be the first person to die there. </itunes:summary>
-        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3" length="313760155.0" type="audio/mpeg"/>
-        <guid>http://bittfurst.dynamic-dns.net:4041/books/Andy Weir/18007564.mp3</guid>
-        <pubDate>2016-04-26 21:13:32.183000</pubDate>
-        <itunes:duration>1800.0</itunes:duration>
-        <category>Podcasts</category>
-        <itunes:explicit>no</itunes:explicit>
-    </item>    
-    <item>
-        <title>The Way of Kings</title>
-        <link>http://the.podcast.website/</link>
-        <itunes:author>Brandon Sanderson</itunes:author>
-        <description>Speak again the ancient oaths, </description>
-        <itunes:summary>Speak again the ancient oaths, </itunes:summary>
-        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/Brandon Sanderson/7235533.mp3" length="313760155.0" type="audio/mpeg"/>
-        <guid>http://bittfurst.dynamic-dns.net:4041/books/Brandon Sanderson/7235533.mp3</guid>
-        <pubDate>2016-04-26 21:09:11.748000</pubDate>
-        <itunes:duration>1800.0</itunes:duration>
+        <enclosure url="http://bittfurst.dynamic-dns.net:4041/books/18007564.mp3" length="2674067.0" type="audio/mpeg"/>
+        <guid>http://bittfurst.dynamic-dns.net:4041/books/18007564.mp3</guid>
+        <pubDate>2016-05-02 17:25:54.775000</pubDate>
+        <itunes:duration>298</itunes:duration>
         <category>Podcasts</category>
         <itunes:explicit>no</itunes:explicit>
     </item>   
