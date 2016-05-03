@@ -38,12 +38,19 @@ class GoodreadsScraper(object):
     
     @property
     def series(self):
-        return self.series_string()[0:-3].strip()
+        ss = self.series_string()
+        if ss:
+            return ss[0:-3].strip()
+        else:
+            return ' '
     
     @property   
     def volume(self):
-        return self.series_string()[-3:].strip()
-    
+        ss = self.series_string()
+        if ss:
+            return ss[-3:].strip()
+        else:
+            return ' '
     
     @property
     def year(self):

@@ -1,6 +1,6 @@
     
     <item>
-        <title>{title}</title>
+        <title>{title} - {series} {volume}</title>
         <link>http://the.podcast.website/</link>
         <itunes:author>{author}</itunes:author>
         <description>{description}</description>
@@ -11,4 +11,5 @@
         <itunes:duration>{duration}</itunes:duration>
         <category>Podcasts</category>
         <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="{local_image_url}" />
     </item>

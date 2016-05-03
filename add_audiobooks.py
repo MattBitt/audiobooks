@@ -30,7 +30,6 @@ def create_rss_xml(infos, path):
     
     for info in infos:
         template = open(ITEM, 'r')
-        print type(info)
         rss.write(template.read().format(**info))
         template.close()
     template = open(FOOTER, 'r')
@@ -86,7 +85,7 @@ if __name__ == "__main__":
             ab.read_from_id3(af)
             ab.date_added = datetime.today()
             ab.local_url = BASE_URL + ab.id + '.mp3'
-            ab.local_image_url = BASE_URL + '/images/{}'.format(img_name)
+            ab.local_image_url = BASE_URL + 'images/{}'.format(img_name)
             print 'Adding book to Database'
             db = MYDB('audiobooks.db')
             db.insert_record('books', ab.__dict__)

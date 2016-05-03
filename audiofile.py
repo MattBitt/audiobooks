@@ -76,12 +76,13 @@ class Audiofile(object):
         self._year = new_year
     
 if __name__ == "__main__":        
-    af = Audiofile(r'Well of Ascension.mp3')
+    af = Audiofile(r'18739426.mp3')
     print af.title
     print af.author
     print af.series
     print af.volume
     print af.year
+    print af.duration
 
     property_names=[p for p in dir(Audiofile) if isinstance(getattr(Audiofile,p),property)]
     print property_names
